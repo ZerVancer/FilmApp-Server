@@ -19,7 +19,7 @@ public class MovieController {
   @Autowired 
   private MovieService movieService;
   
-  @GetMapping("{id}")
+  @GetMapping("/{id}")
   public ResponseEntity<Movie> getMovieById(@PathVariable Integer id) {
     Movie found = movieService.getMovieById(id);
 

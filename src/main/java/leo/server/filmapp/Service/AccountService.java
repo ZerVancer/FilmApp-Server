@@ -14,8 +14,8 @@ public class AccountService {
   @Autowired 
   private AccountRepository accountRepository;
 
-  public Account addAccount(Account user) {
-    return accountRepository.save(user);
+  public Account addAccount(Account account) {
+    return accountRepository.save(account);
   }
 
   public Account getAccount(String name, String password)  {
@@ -28,9 +28,5 @@ public class AccountService {
 
   public List<Account> getAllAccounts() {
     return accountRepository.findAll();
-  }
-
-  public boolean existsAccount(String name) {
-    return accountRepository.existsByName(name);
   }
 }

@@ -15,33 +15,27 @@ import leo.server.filmapp.Entity.Account;
 import leo.server.filmapp.Service.AccountService;
 
 @RestController 
-@RequestMapping("/user")
+@RequestMapping("/account")
 public class AccountController {
 
   @Autowired 
   private AccountService accountService;
 
   @PostMapping("/register")
-  public ResponseEntity<Account> addAccount(@RequestBody Account user) {
-    boolean exists = accountService.existsAccount(user.getName());
-
-    if (exists) {
-      return ResponseEntity.ok(null);
-    }
-
-    Account saved = accountService.addAccount(user);
+  public ResponseEntity<Account> addAccount(@RequestBody Account account) {
+    Account saved = accountService.addAccount(account);
 
     return ResponseEntity.ok(saved);
   }
 
-  @GetMapping ("/getUser={name}&{password}")
+  @GetMapping ("/{name}&{password}")
   public ResponseEntity<Account> getAccount(@PathVariable String name, @PathVariable String password) {
     Account saved = accountService.getAccount(name, password);
 
     return ResponseEntity.ok(saved);
   }
 
-  @GetMapping("/getUserById={id}")
+  @GetMapping("/{id}")
   public ResponseEntity<Account> getAccountById(@PathVariable Integer id) {
     Account gotten = accountService.getAccountById(id);
 

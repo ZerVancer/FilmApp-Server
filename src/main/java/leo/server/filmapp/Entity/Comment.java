@@ -15,14 +15,21 @@ import lombok.Setter;
 @Getter 
 @Setter 
 @NoArgsConstructor
-public class Comments {
+public class Comment {
     @Id 
     @GeneratedValue 
     private Integer id;
+    private String content;
     @ManyToOne
     @JoinColumn(name = "movieId", referencedColumnName = "id")
     private Movie movie;
     @ManyToOne
     @JoinColumn(name = "accountId", referencedColumnName = "id")
     private Account account;
+
+    public Comment(String content, Movie movie, Account account) {
+        this.content = content;
+        this.movie = movie;
+        this.account = account;
+    }
 }
