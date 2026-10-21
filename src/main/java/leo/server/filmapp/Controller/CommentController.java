@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -30,11 +31,18 @@ public class CommentController {
     return ResponseEntity.ok(saved);
   }
   
-  @PutMapping ("/{id}")
+  @PutMapping("/{id}")
   public ResponseEntity<Comment> addComment(@PathVariable Integer id, @RequestBody Comment comment) {
     Comment saved = commentService.putComment(id, comment);
 
     return ResponseEntity.ok(saved);
+  }
+
+  @PatchMapping("/{id}")
+  public ResponseEntity<Comment> patchComment(@PathVariable Integer id, @RequestBody Comment comment) {
+    Comment patched = commentService.patchComment(id, comment);
+
+    return ResponseEntity.ok(patched);
   }
 
   @DeleteMapping("/{id}")

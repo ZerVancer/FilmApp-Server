@@ -28,6 +28,16 @@ public class CommentService {
     return commentRepository.save(comment);
   }
 
+  public Comment patchComment(Integer id, Comment comment) {
+    Comment old = commentRepository.findById(id).orElse(null);
+
+    old.setContent(comment.getContent());
+
+    Comment updated = commentRepository.save(old);
+
+    return updated;
+  }
+
   public Comment deleteComment(Integer id) {
     Comment deleted = commentRepository.findById(id).orElse(null);
 

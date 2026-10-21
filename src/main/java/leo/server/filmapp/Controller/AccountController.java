@@ -28,7 +28,7 @@ public class AccountController {
     return ResponseEntity.ok(saved);
   }
 
-  @GetMapping ("/{name}&{password}")
+  @GetMapping ("/login={name}/{password}")
   public ResponseEntity<Account> getAccount(@PathVariable String name, @PathVariable String password) {
     Account saved = accountService.getAccount(name, password);
 

@@ -34,14 +34,10 @@ public class DataInitialiser implements CommandLineRunner {
 
     movieService.addMovie(m1);
     movieService.addMovie(m2);
-    movieService.addMovie(new Movie("Movie3"));
-    movieService.addMovie(new Movie("Movie4"));
-    movieService.addMovie(new Movie("Movie5"));
-    movieService.addMovie(new Movie("Movie6"));
-    movieService.addMovie(new Movie("Movie7"));
-    movieService.addMovie(new Movie("Movie8"));
-    movieService.addMovie(new Movie("Movie9"));
-    movieService.addMovie(new Movie("Movie10"));
+
+    for (int index = 3; index < 30; index++) {
+      movieService.addMovie(new Movie("Movie"+index));
+    }
 
     commentService.addComment(new Comment("Content!", m1, acc1));
     commentService.addComment(new Comment("Content2", m1, acc1));
