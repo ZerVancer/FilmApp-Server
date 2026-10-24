@@ -18,8 +18,18 @@ public class Movie {
   @GeneratedValue 
   private Integer id;
   private String title;
+  private String details;
+  private String imdbLink;
 
-  public Movie(String title) {
+  public Movie(String title, String imdbLink) {
     this.title = title;
+    this.details = "";
+    this.imdbLink = imdbLink;
+  }
+
+  public Movie(String title, String details, String imdbLink) {
+    this.title = title;
+    this.details = details;
+    this.imdbLink = imdbLink;
   }
 }
